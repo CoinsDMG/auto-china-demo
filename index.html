@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЧЕ168.РФ — авто из Китая под ключ в Уссурийске</title>
+<meta name="description" content="Подбор и доставка автомобилей из Китая под ключ через Уссурийскую таможню. Цена в рублях сразу в каталоге.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #ff651b;
+    --orange-2: #ff8a1e;
+    --orange-dark: #e9500a;
+    --blue: #2f6bdc;
+    --ink: #333;
+    --ink-2: #666;
+    --ink-3: #999;
+    --line: #ececec;
+    --bg: #f5f5f5;
+    --price: #f23d1e;
+    --wrap: 1200px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font: 14px/1.5 "Golos Text", "PingFang SC", "Microsoft Yahei", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  button, input { font: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- header ---------- */
+  .hdr { background: #fff; position: relative; z-index: 5; }
+  .hdr .wrap { display: flex; align-items: center; height: 64px; gap: 22px; }
+  .logo { display: flex; flex-direction: column; flex-shrink: 0; }
+  .logo-row { display: flex; align-items: center; gap: 5px; }
+  .logo-word { font-weight: 800; font-size: 25px; letter-spacing: -.5px; line-height: 1; color: #1d1d1d; }
+  .logo-word b { color: var(--orange); font-weight: 800; }
+  .logo-tag {
+    background: var(--orange); color: #fff; font-size: 11px; font-weight: 700;
+    padding: 2px 5px 2px 6px; border-radius: 3px 8px 3px 8px; line-height: 1.2;
+  }
+  .logo-sub { font-size: 10px; color: var(--orange); letter-spacing: .3px; margin-top: 3px; white-space: nowrap; }
+
+
+  .nav { display: flex; gap: 24px; margin-left: 12px; }
+  .nav a { font-size: 15px; font-weight: 500; position: relative; padding: 21px 0; white-space: nowrap; }
+  .nav a:hover { color: var(--orange); }
+  .nav a.on { color: var(--orange); }
+  .nav a.on::after {
+    content: ""; position: absolute; left: 50%; bottom: 13px; width: 18px; height: 2px;
+    margin-left: -9px; background: var(--orange); border-radius: 2px;
+  }
+
+  .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+  .phone { font-weight: 700; font-size: 16px; white-space: nowrap; }
+  .phone small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-3); line-height: 1; }
+  .btn-o {
+    background: var(--orange); color: #fff; border: 0; border-radius: 2px; cursor: pointer;
+    height: 34px; padding: 0 16px; font-weight: 600; white-space: nowrap;
+    transition: background .15s;
+  }
+  .btn-o:hover { background: var(--orange-dark); }
+  .burger { display: none; background: none; border: 0; width: 34px; height: 34px; cursor: pointer; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative; overflow: hidden; height: 400px;
+    background: linear-gradient(100deg, var(--orange-2) 0%, var(--orange) 55%, #ff5b16 100%);
+  }
+  .hero::before { /* светлые диагонали, как на оригинале */
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(115deg, transparent 0 58%, rgba(255,255,255,.07) 58% 70%, transparent 70%),
+      linear-gradient(115deg, transparent 0 74%, rgba(255,255,255,.05) 74% 80%, transparent 80%);
+  }
+  .hero::after { /* синий уголок справа снизу */
+    content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px;
+    background: var(--blue); transform: rotate(45deg); opacity: .95;
+  }
+  .hero .wrap { position: relative; height: 100%; z-index: 1; }
+  .slide {
+    position: absolute; left: 50px; top: 62px; max-width: 640px;
+    opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .5s; pointer-events: none;
+  }
+  .slide.on { opacity: 1; transform: none; pointer-events: auto; }
+  .slide h1, .slide .h1 {
+    color: #fff; font-size: 50px; line-height: 1.12; font-weight: 800; letter-spacing: -1px;
+    text-shadow: 0 2px 0 rgba(180,50,0,.18);
+  }
+  .slide p { color: #fff; font-size: 26px; font-weight: 500; margin-top: 12px; opacity: .97; }
+  .slide .frame {
+    display: inline-block; margin-top: 18px; color: #fff; font-size: 19px; font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,.85); padding: 5px 28px; letter-spacing: 1px;
+  }
+  .arrow {
+    position: absolute; left: 0; top: 50%; margin-top: -26px; width: 26px; height: 52px; z-index: 2;
+    background: rgba(0,0,0,.18); border: 0; cursor: pointer; display: grid; place-items: center;
+  }
+  .arrow svg { width: 12px; height: 20px; }
+  .dots { position: absolute; left: 50%; bottom: 16px; display: flex; gap: 6px; transform: translateX(-50%); z-index: 2; }
+  .dots button { width: 8px; height: 8px; border-radius: 4px; border: 0; background: rgba(255,255,255,.55); cursor: pointer; transition: width .3s; }
+  .dots button.on { width: 28px; background: rgba(255,255,255,.95); }
+
+  .person {
+    position: absolute; right: 70px; bottom: 0; width: 300px; height: 352px;
+  }
+  .person svg { width: 100%; height: 100%; display: block; }
+  .person-note {
+    position: absolute; right: -6px; top: 18px; background: #fff; color: var(--ink);
+    font-size: 12px; line-height: 1.35; padding: 7px 10px; border-radius: 4px; width: 168px;
+    box-shadow: 0 4px 14px rgba(120,40,0,.18);
+  }
+  .person-note::before {
+    content: ""; position: absolute; left: -6px; top: 14px; border: 6px solid transparent;
+    border-left: 0; border-right-color: #fff;
+  }
+
+  /* ---------- quick panel ---------- */
+  .panel .wrap { display: flex; background: #fff; padding-top: 20px; padding-bottom: 22px; }
+  .buy { flex: 1; padding-right: 28px; }
+  .p-title { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .p-title svg { width: 8px; height: 12px; }
+  .p-title .chip {
+    background: var(--price); color: #fff; font-size: 11px; font-weight: 600; padding: 0 6px;
+    border-radius: 2px 6px 2px 6px; margin-left: -2px; transform: translateY(-9px);
+  }
+  .brands { display: grid; grid-template-columns: repeat(8, 1fr); margin-top: 16px; }
+  .brand { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0; border-radius: 4px; }
+  .brand:hover { background: #fff6f1; }
+  .brand i {
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    font-style: normal; font-weight: 700; font-size: 12px; color: #555; background: #f3f3f3;
+    border: 1px solid #e6e6e6;
+  }
+  .brand:hover i { border-color: var(--orange); color: var(--orange); }
+  .ranges { display: flex; flex-wrap: wrap; gap: 2px 22px; margin-top: 10px; padding: 0 6px; }
+  .ranges a { padding: 5px 0; font-size: 13px; color: #444; white-space: nowrap; }
+  .ranges a:hover { color: var(--orange); }
+  .ranges a.all { color: var(--orange); }
+
+  .calc { width: 330px; border-left: 1px solid var(--line); padding-left: 28px; }
+  .calc .hint { font-size: 13px; color: var(--ink-2); margin: 10px 0 12px; }
+  .calc .hint b { color: var(--orange); font-size: 18px; font-weight: 700; }
+  .field { position: relative; margin-bottom: 10px; }
+  .field input {
+    width: 100%; height: 44px; border: 1px solid #ddd; border-radius: 2px; padding: 0 12px;
+    font-size: 15px; color: var(--ink); outline: 0; background: #fff;
+  }
+  .field input:focus { border-color: var(--orange); }
+  .field.bad input { border-color: var(--price); }
+  .field .err { display: none; font-size: 12px; color: var(--price); margin-top: 3px; }
+  .field.bad .err { display: block; }
+  .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+  .agree { display: flex; gap: 7px; align-items: flex-start; font-size: 11px; color: var(--ink-3); line-height: 1.35; margin: 2px 0 12px; cursor: pointer; }
+  .agree input { margin-top: 1px; accent-color: var(--orange); flex-shrink: 0; }
+  .agree a { color: var(--ink-2); text-decoration: underline; text-decoration-color: #ccc; }
+  .agree.bad { color: var(--price); }
+  .btn-big {
+    width: 100%; height: 48px; font-size: 16px; font-weight: 600; line-height: 1.15;
+    background: var(--orange); color: #fff; border: 0; border-radius: 2px; cursor: pointer;
+  }
+  .btn-big:hover { background: var(--orange-dark); }
+  .btn-big:disabled { opacity: .55; cursor: not-allowed; }
+  .done { display: none; text-align: center; padding: 18px 6px 4px; }
+  .done svg { width: 44px; height: 44px; }
+  .done h3 { font-size: 17px; margin-top: 8px; }
+  .done p { color: var(--ink-2); font-size: 13px; margin-top: 4px; }
+  .calc.sent form { display: none; }
+  .calc.sent .done { display: block; }
+
+  /* ---------- floating helper ---------- */
+  .float {
+    position: fixed; right: 20px; top: 46%; z-index: 20; width: 64px; height: 64px; border-radius: 50%;
+    background: #fff; box-shadow: 0 4px 18px rgba(0,0,0,.12); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2px; font-size: 10px; color: var(--ink);
+  }
+  .float svg { width: 24px; height: 24px; }
+  .float:hover { color: var(--orange); }
+
+  .note {
+    max-width: var(--wrap); margin: 0 auto; padding: 14px 16px 30px; font-size: 11px; color: var(--ink-3);
+  }
+
+  /* ---------- adaptive ---------- */
+  @media (max-width: 1180px) {
+      .nav { gap: 16px; }
+    .nav a { font-size: 14px; }
+  }
+  @media (max-width: 1100px) {
+    .nav, .hdr-right .btn-o { display: none; }
+    .burger { display: grid; place-items: center; }
+    .hdr.open .nav {
+      display: flex; flex-direction: column; gap: 0; position: absolute; left: 0; right: 0; top: 64px;
+      background: #fff; padding: 4px 16px 12px; box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+    .hdr.open .nav a { padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .hdr.open .nav a.on::after { display: none; }
+    .person { right: 10px; width: 230px; height: 270px; }
+    .person-note { display: none; }
+    .slide h1, .slide .h1 { font-size: 40px; }
+    .slide p { font-size: 21px; }
+    .panel .wrap { flex-direction: column; }
+    .buy { padding-right: 0; }
+    .calc { width: auto; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); margin-top: 18px; padding-top: 18px; }
+  }
+  @media (max-width: 640px) {
+    .hdr .wrap { gap: 12px; height: 58px; }
+    .logo-word { font-size: 22px; }
+    .phone { font-size: 14px; }
+    .phone small { display: none; }
+    .hdr.open .nav { top: 58px; }
+    .hero { height: 390px; }
+    .hero::after { width: 140px; height: 140px; right: -50px; bottom: -50px; }
+    .slide { top: 24px; left: 16px; right: 16px; }
+    .slide h1, .slide .h1 { font-size: 27px; letter-spacing: -.4px; }
+    .slide h1 br, .slide .h1 br { display: none; }
+    .slide p { font-size: 17px; margin-top: 8px; }
+    .btn-big { font-size: 15px; }
+    .slide .frame { font-size: 13px; padding: 4px 12px; margin-top: 12px; letter-spacing: 0; }
+    .person { width: 150px; height: 176px; right: 0; }
+    .arrow { display: none; }
+    .panel .wrap { padding-top: 0; }
+    .calc { order: -1; margin: 0 0 18px; padding: 18px 0; border-top: 0; border-bottom: 1px solid var(--line); }
+    .brands { grid-template-columns: repeat(4, 1fr); row-gap: 6px; }
+    .ranges { gap: 2px 16px; }
+    .float { width: 54px; height: 54px; right: 12px; top: auto; bottom: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="ЧЕ168.РФ — на главную">
+      <span class="logo-row">
+        <span class="logo-word">ЧЕ<b>168</b></span>
+        <span class="logo-tag">.РФ</span>
+      </span>
+      <span class="logo-sub">авто из Китая · под ключ</span>
+    </a>
+
+
+    <nav class="nav">
+      <a href="#" class="on">Главная</a>
+      <a href="#">Каталог</a>
+      <a href="#">Проверить авто</a>
+      <a href="#">О нас</a>
+      <a href="#">Схема работы</a>
+      <a href="#">Статьи</a>
+      <a href="#">Контакты</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a class="phone" href="tel:+79990000000">+7 999 000-00-00<small>ежедневно 9:00–21:00 Влд</small></a>
+      <button class="btn-o" data-scroll-form>Оставить заявку</button>
+      <button class="burger" id="burger" aria-label="Меню">
+        <svg width="22" height="16" viewBox="0 0 22 16"><path d="M0 1h22M0 8h22M0 15h22" stroke="#333" stroke-width="2"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <button class="arrow" id="prev" aria-label="Предыдущий слайд">
+      <svg viewBox="0 0 12 20"><path d="M10 2L2 10l8 8" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
+    </button>
+
+    <div class="slide on">
+      <h1>Выбор за вами, <br>всё остальное — за нами</h1>
+      <p>Машины с площадок Китая — сразу с ценой в рублях</p>
+      <span class="frame">Под ключ в Уссурийске, цена в договоре</span>
+    </div>
+    <div class="slide">
+      <div class="h1">Проверим историю <br>до того, как вы заплатите</div>
+      <p>ДТП, пробег, ремонты — отчёт на русском</p>
+      <span class="frame">По VIN или ссылке на объявление</span>
+    </div>
+
+    <div class="person">
+      <svg viewBox="0 0 300 352" aria-hidden="true">
+        <defs>
+          <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3f7af0"/><stop offset="1" stop-color="#2556c4"/>
+          </linearGradient>
+        </defs>
+        <path d="M18 352c4-74 30-112 78-128l30-10 24 18 24-18 30 10c48 16 74 54 78 128z" fill="url(#shirt)"/>
+        <path d="M126 214l24 30 24-30-6-12-18 14-18-14z" fill="#fff" opacity=".95"/>
+        <rect x="134" y="176" width="32" height="34" rx="10" fill="#f1c7a7"/>
+        <ellipse cx="150" cy="122" rx="52" ry="62" fill="#f6d3b6"/>
+        <path d="M98 112c0-46 22-68 54-68s52 20 52 64c-10-20-30-30-52-30-24 0-42 12-54 34z" fill="#2b2b2b"/>
+        <rect x="74" y="34" width="152" height="170" rx="76" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="7 6" opacity=".9"/>
+      </svg>
+      <span class="person-note">Здесь будет ваше фото — вмонтирую в баннер с тем же светом и тенями</span>
+    </div>
+
+    <div class="dots" id="dots"><button class="on" aria-label="Слайд 1"></button><button aria-label="Слайд 2"></button></div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="wrap">
+    <div class="buy">
+      <div class="p-title">Хочу купить
+        <svg viewBox="0 0 8 12"><path d="M2 1l5 5-5 5" fill="none" stroke="#999" stroke-width="1.5"/></svg>
+        <span class="chip">до 160 л.с.</span>
+      </div>
+      <div class="brands">
+        <a class="brand" href="#"><i>BYD</i>BYD</a>
+        <a class="brand" href="#"><i>Gl</i>Geely</a>
+        <a class="brand" href="#"><i>Hv</i>Haval</a>
+        <a class="brand" href="#"><i>Ch</i>Chery</a>
+        <a class="brand" href="#"><i>Cg</i>Changan</a>
+        <a class="brand" href="#"><i>Ty</i>Toyota</a>
+        <a class="brand" href="#"><i>VW</i>Volkswagen</a>
+        <a class="brand" href="#"><i>Hd</i>Honda</a>
+      </div>
+      <div class="ranges">
+        <a href="#">Новые поступления</a>
+        <a href="#">до 1,5 млн</a>
+        <a href="#">1,5–2 млн</a>
+        <a href="#">2–2,5 млн</a>
+        <a href="#">2,5–3 млн</a>
+        <a href="#">от 3 млн</a>
+        <a href="#">Кроссоверы</a>
+        <a href="#">Седаны</a>
+        <a href="#">Гибриды</a>
+        <a href="#">Электро</a>
+        <a href="#">до 3 лет</a>
+        <a href="#">3–5 лет</a>
+        <a href="#">Пробег до 30 тыс.</a>
+        <a href="#" class="all">Весь каталог ›</a>
+      </div>
+    </div>
+
+    <div class="calc" id="calc">
+      <form id="lead" novalidate>
+        <div class="p-title">Расчёт под ключ</div>
+        <p class="hint">Пришлём цену с пошлиной, утильсбором и доставкой до Уссурийска — <b>за 15 минут</b></p>
+
+        <div class="field">
+          <input name="name" type="text" placeholder="Ваше имя" autocomplete="given-name" maxlength="40">
+        </div>
+        <div class="field" id="f-phone">
+          <input name="phone" id="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+          <span class="err">Введите номер полностью</span>
+        </div>
+
+        <!-- антиспам: поле-ловушка и метка времени; людям не видны -->
+        <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="t0" id="t0">
+
+        <label class="agree" id="agree">
+          <input type="checkbox" name="consent">
+          <span>Согласен на обработку персональных данных по <a href="#">политике</a></span>
+        </label>
+
+        <button class="btn-big" type="submit">Получить расчёт стоимости авто под ключ</button>
+      </form>
+
+      <div class="done">
+        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#fff1ea"/><path d="M13 22.5l6 6 12-13" fill="none" stroke="#ff651b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Заявка принята</h3>
+        <p>Это демо — заявка никуда не ушла. В рабочей версии она сразу придёт в Telegram и сохранится в журнале заявок в админке.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="note">Демо первого экрана для че168.рф. Сайт не является представительством che168.com / Autohome Inc.</p>
+
+<a class="float" href="#" aria-label="Написать в Telegram">
+  <svg viewBox="0 0 24 24"><path d="M21.5 3.5L2.8 10.7c-.9.4-.9 1.4 0 1.7l4.6 1.5 1.8 5.5c.2.7 1.1.9 1.6.4l2.6-2.4 4.8 3.5c.6.4 1.4.1 1.6-.6L22.9 4.9c.3-1-.5-1.8-1.4-1.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.5 13.8l10-6.6-7.6 8.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  Онлайн
+</a>
+
+<script>
+(() => {
+  // --- меню на мобильных
+  const hdr = document.getElementById('hdr');
+  document.getElementById('burger').onclick = () => hdr.classList.toggle('open');
+
+  // --- слайдер баннера
+  const slides = [...document.querySelectorAll('.slide')];
+  const dots = [...document.querySelectorAll('#dots button')];
+  let cur = 0, timer;
+  const show = i => {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+    clearInterval(timer); timer = setInterval(() => show(cur + 1), 6000);
+  };
+  dots.forEach((d, k) => d.onclick = () => show(k));
+  document.getElementById('prev').onclick = () => show(cur - 1);
+  show(0);
+
+  // --- маска телефона +7 (XXX) XXX-XX-XX
+  const phone = document.getElementById('phone');
+  let prev = ''; // 10 цифр номера без кода страны
+  const digits = v => {
+    const raw = v.replace(/\D/g, '');
+    let d = v.startsWith('+7') ? raw.slice(1) : raw;
+    if (d.length === 11 && /^[78]/.test(d)) d = d.slice(1);       // вставили 8914… или +7914…
+    else if (!prev && d.length === 1 && /^[78]/.test(d)) d = '';  // первой набрали 8 или 7 по привычке
+    return (prev = d.slice(0, 10));
+  };
+  const fmt = d => {
+    if (!d) return '';
+    let s = '+7 (' + d.slice(0, 3);
+    if (d.length >= 3) s += ') ' + d.slice(3, 6);
+    if (d.length >= 6) s += '-' + d.slice(6, 8);
+    if (d.length >= 8) s += '-' + d.slice(8, 10);
+    return s;
+  };
+  phone.addEventListener('input', () => { phone.value = fmt(digits(phone.value)) || '+7 ('; fPhone.classList.remove('bad'); });
+  phone.addEventListener('focus', () => { if (!phone.value) phone.value = '+7 ('; });
+  phone.addEventListener('blur', () => { if (phone.value === '+7 (') phone.value = ''; });
+  phone.addEventListener('keydown', e => { // backspace через скобки и дефисы
+    if (e.key === 'Backspace' && /[\s()\-]$/.test(phone.value) && phone.value.length > 4) {
+      e.preventDefault(); phone.value = fmt(digits(phone.value).slice(0, -1));
+    }
+  });
+
+  // --- отправка
+  const form = document.getElementById('lead');
+  const fPhone = document.getElementById('f-phone');
+  const agree = document.getElementById('agree');
+  document.getElementById('t0').value = Date.now();
+  agree.querySelector('input').onchange = () => agree.classList.remove('bad');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const d = digits(phone.value);
+    let ok = true;
+    if (d.length !== 10 || !/^[3489]/.test(d)) { fPhone.classList.add('bad'); ok = false; }
+    if (!form.consent.checked) { agree.classList.add('bad'); ok = false; }
+    if (!ok) return;
+    // бот: заполнил ловушку или уложился быстрее 3 секунд — молча делаем вид, что всё ок
+    const isBot = form.company_site.value || Date.now() - +form.t0.value < 3000;
+    if (!isBot) { /* боевая версия: fetch('/api/lead', …) с подписанным токеном */ }
+    document.getElementById('calc').classList.add('sent');
+  });
+
+  document.querySelectorAll('[data-scroll-form]').forEach(b => b.onclick = () => {
+    document.getElementById('calc').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => phone.focus(), 400);
+  });
+})();
+</script>
+</body>
+</html>
